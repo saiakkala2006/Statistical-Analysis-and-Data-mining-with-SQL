@@ -1,0 +1,221 @@
+Project: Statistical Analysis and Data Mining with SQL (26sqlll)
+1. Abstract
+
+The Statistical Analysis and Data Mining with SQL project is a database-driven analytical system developed using PostgreSQL and Flask. The primary objective of the project is to perform statistical computations, identify hidden patterns, and generate meaningful insights from structured datasets using SQL queries. The system includes SQL functions, views, nested queries, and join operations to perform statistical analysis, trend analysis, and outlier detection. A web interface was developed using Flask, HTML, CSS, and JavaScript, allowing users to view predefined SQL queries and execute them dynamically with real-time results fetched directly from the PostgreSQL database.
+
+2. Methodology
+
+The project was developed using the following methodology:
+
+Phase 1 – Database Design
+Designed relational database schema.
+Created three normalized tables:
+Users
+Dataset
+Analysis Logs
+Phase 2 – Data Generation
+Inserted sample users manually.
+Generated 200 realistic records using the Python Faker library.
+Stored generated data in PostgreSQL.
+Phase 3 – SQL Analysis
+
+Implemented
+
+Statistical Functions
+Average
+Median
+Standard Deviation
+Views
+Category Summary
+Trend Analysis
+Recent Operations
+Nested Queries
+Join Queries
+Outlier Detection
+Phase 4 – Web Integration
+
+Developed a Flask web application that
+
+connects to PostgreSQL
+displays predefined SQL queries
+allows users to
+View Query
+View Output
+Phase 5 – Testing
+
+Verified
+
+Database connectivity
+SQL functions
+Views
+Query outputs
+Flask integration
+Dynamic data retrieval
+3. Technologies / Languages Used
+Database
+PostgreSQL
+Backend
+Python
+Flask
+psycopg2
+Frontend
+HTML
+CSS
+JavaScript
+Data Generation
+Python Faker Library
+IDE
+VS Code
+Database Client
+pgAdmin4
+4. Accuracy
+
+Since this is not a Machine Learning project, there is no prediction accuracy.
+
+Instead, the project was validated through:
+
+Correct SQL execution
+Successful statistical calculations
+Accurate query outputs
+Real-time database retrieval
+Successful testing of all 26 queries
+
+Hence,
+
+Functional Accuracy: Nearly 100%, as all implemented SQL functions, procedures, views, nested queries, join queries, and website outputs produced the expected results.
+
+5. Algorithm Used
+
+Although this project is SQL-based, it internally uses several analytical algorithms and approaches.
+
+1. Aggregate Functions
+AVG()
+COUNT()
+SUM()
+STDDEV()
+2. Median Calculation
+
+Using
+
+percentile_cont(0.5)
+WITHIN GROUP()
+3. Ranking Algorithm
+
+Using
+
+RANK()
+OVER()
+
+to find
+
+Top 5 records
+Most frequent labels
+4. Grouping Algorithm
+
+Using
+
+GROUP BY
+
+for
+
+Category summaries
+Label distributions
+Trend reports
+5. Outlier Detection Algorithm
+
+Used
+
+Mean ± 2 × Standard Deviation
+
+Formula
+
+Outlier if
+
+Value > Mean + 2 × StdDev
+
+OR
+
+Value < Mean - 2 × StdDev
+6. Join Algorithm
+
+Uses SQL JOIN operations
+
+INNER JOIN
+
+to combine
+
+Users ↔ Analysis Logs
+
+6. Existing System
+
+Existing systems generally consist of
+
+Basic SQL reporting
+Manual query execution
+Static reports
+Spreadsheet-based analysis
+No web interface
+Limited statistical analysis
+
+Users need SQL knowledge to retrieve information.
+
+7. Proposed System
+
+Our proposed system provides
+
+Automated statistical analysis
+Dynamic SQL execution
+Real-time query results
+Interactive Flask web interface
+Trend analysis
+Outlier detection
+Category summaries
+User activity tracking
+Easy-to-use dashboard without requiring users to write SQL queries manually
+8. Disadvantages of Existing System
+Manual SQL query writing
+Time-consuming analysis
+No centralized dashboard
+Difficult for non-technical users
+Limited statistical reporting
+No real-time visualization of query outputs
+Poor scalability for analytical reporting
+Lack of automated data generation
+9. Advantages of Proposed System
+User-friendly web interface
+Real-time PostgreSQL connectivity
+Automated statistical computations
+Faster query execution
+Easy access to predefined analytical queries
+Dynamic output generation
+Improved decision making through trend analysis
+Efficient outlier detection
+Modular architecture
+Easily scalable
+Secure backend using Flask and PostgreSQL
+Automated test data generation using Faker
+10. Novelty of the Project
+
+The uniqueness of this project lies in integrating SQL analytics with a web application.
+
+Unlike conventional SQL projects that require manual execution inside pgAdmin, this project enables users to:
+
+Execute SQL queries directly through a browser.
+View both the SQL query and its output with a single click.
+Perform statistical analysis and data mining interactively.
+Use automatically generated realistic datasets for testing.
+Access all analytical features through a clean Flask-based interface.
+
+
+
+
+
+
+
+"Why did you use Flask?"
+
+"I used Flask because it is a lightweight Python web framework that integrates seamlessly with PostgreSQL using psycopg2. It allowed me to create a simple web interface where users can execute predefined SQL queries and retrieve live results from the database without directly interacting with pgAdmin."
+
+"Why PostgreSQL instead of MySQL?"
+
+"PostgreSQL provides advanced analytical functions such as percentile_cont(), window functions, and better support for statistical computations. These features made it more suitable for implementing statistical analysis and data mining operations compared to MySQL."
