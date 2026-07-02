@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>26SQL Query Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Statistical analysis and Data-mining using SQL</h1>
+
+    {% for label, sql in queries.items() %}
+<div class="card">
+    <h3>{{ label }}</h3>
+    <button onclick="viewQuery('{{ label }}')">📝 View Query</button>
+    <button onclick="viewOutput('{{ label }}')">📊 View Output</button>
+    <pre id="query-{{ label }}" class="hidden"></pre>
+    <div id="output-{{ label }}"></div>
+</div>
+{% endfor %}
+
+
+    <!-- Jinja2-safe injection of Python dict into JavaScript -->
+    <script type="text/javascript">
+    window.queries = {{ queries | tojson | safe }};
+
+    function viewQuery(label) {
+        fetch('/get_query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'query_key=' + encodeURIComponent(label)
+        })
+        .then(res => res.text())
+        .then(data => {
+            const pre = document.getElementById('query-' + label);
+            pre.textContent = data;
+            pre.classList.toggle('hidden');
+        });
+    }
+
+    function viewOutput(label) {
+        fetch('/get_output', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'query_key=' + encodeURIComponent(label)
+        })
+        .then(res => res.json())
+        .then(data => {
+            const div = document.getElementById('output-' + label);
+            if (data.error) {
+                div.innerHTML = `<p style="color:red">${data.error}</p>`;
+                return;
+            }
+
+            let table = '<table><tr>';
+            data.columns.forEach(col => table += `<th>${col}</th>`);
+            table += '</tr>';
+
+            data.rows.forEach(row => {
+                table += '<tr>';
+                row.forEach(val => table += `<td>${val}</td>`);
+                table += '</tr>';
+            });
+            table += '</table>';
+            div.innerHTML = table;
+        });
+    }
+</script>
+</body>
+</html>
